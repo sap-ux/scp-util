@@ -43,16 +43,16 @@ os.exec(`cf login -u ${process.argv[2]} -p ${process.argv[3]} -o ${process.argv[
 
 function listApps(){
     // list started apps
-    os.exec("cf apps | grep started").then(sOut=>{        
+    os.exec("cf apps").then(sOut=>{        
         console.log(`# cf apps (started): \n\n${sOut}`);
         let sStartedApps = sOut, aStartedApps = [];        
         // convert list of started apps into array [appName, state, instances, memory, disk, URL]
         let aLines = sStartedApps.split(/\r?\n/);        
         for (let i = 0; i < aLines.length; i++) {
             let a = aLines[i].split(/\s+/);
-            let oEntry = {"name":a[0],"state":a[1],"memory":a[3],"disk":a[4],"lastLog":null,"lastLogTime":null,"idleHours":null};
-            if (!a[0])
+            if (!a[0] || a[1] != "started")
                 continue;
+            let oEntry = {"name":a[0],"state":a[1],"memory":a[3],"disk":a[4],"lastLog":null,"lastLogTime":null,"idleHours":null};
             aStartedApps.push(oEntry);
         }
         //console.log('# Converted array:\n\n ' + JSON.stringify(aStartedApps, null, 4)+"\n");
@@ -64,8 +64,13 @@ function filterAndStopUnusedApps(aStartedApps) {
     let aPromises = [], aUnusedApps = [];
     for ( let i = 0; i < aStartedApps.length; i++  ){
         let oEntry = aStartedApps[i];
-        let p = os.exec("cf logs "+oEntry.name+" --recent | tail -1").then(res=> {
-            oEntry.lastLog = res.trim();
+        let p = os.exec("cf logs "+oEntry.name+" --recent").then(res=> {
+            let aLines = res.trim().split(/\r?\n/); 
+            let sLastLine = null;
+            if (aLines.length > 0) {
+                sLastLine = aLines[aLines.length - 1].trim();
+            }
+            oEntry.lastLog = sLastLine;
             if (oEntry.lastLog) {
                 oEntry.lastLogTime = Date.parse(oEntry.lastLog.split(/\s+/)[0]);
                 oEntry.idleHours = (iCurrentTime - oEntry.lastLogTime)/1000/3600;
@@ -80,7 +85,7 @@ function filterAndStopUnusedApps(aStartedApps) {
     }
     Promise.all(aPromises).then((values) => {
         console.log('# started apps (with log time and idle hours):\n\n' + JSON.stringify(aStartedApps, null, 4)+"\n");
-        stopUnusedApps(aUnusedApps);
+        //stopUnusedApps(aUnusedApps);
     });
 }
 
