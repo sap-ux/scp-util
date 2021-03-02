@@ -1,5 +1,5 @@
 {
-  "name": "scp_util",
+  "name": "scp-util",
   "version": "1.0.0",
   "description": "SCP Utilities",
   "main": "stop-unused-apps.js",

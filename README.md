@@ -8,5 +8,5 @@ This nodejs program identifies and stops unused applications in Cloud Foundry to
 
 Usage:
 ````
-node stop_unused_apps.js <user> <password> <org> <space> <max_idle_hours>
+node stop-unused-apps.js <cfUser> <cfPassword> <cfOrg> <cfSpace> <maxIdleHours>
 ````
