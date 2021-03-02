@@ -28,7 +28,7 @@ var os = new os_func();
 
 // check input
 if (process.argv.length < 6) {
-    console.log("# please specify cf login by: node stop-unused-apps.js <user> <password> <org> <space> <max_idle_hours>");
+    console.log("# please specify cf login by: node stop-unused-apps.js <cfUser> <cfPassword> <cfOrg> <cfSpace> <maxIdleHours>");
     process.exit(0);
 }
 
@@ -67,7 +67,8 @@ function filterAndStopUnusedApps(aStartedApps) {
         let p = os.exec("cf logs "+oEntry.name+" --recent").then(res=> {
             let aLines = res.trim().split(/\r?\n/); 
             let sLastLine = null;
-            if (aLines.length > 0) {
+            if (aLines.length > 1) {
+                // skip first line "Retrieving logs from ..."
                 sLastLine = aLines[aLines.length - 1].trim();
             }
             oEntry.lastLog = sLastLine;
