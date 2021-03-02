@@ -8,8 +8,8 @@
       {
         "execute": "scripts-sapcp:ExecuteScript:1",
         "input": {
-          "parameters": "[\"$(.execution.input.gitUser)\",\"$(.execution.input.gitPassword)\",\"$(.execution.input.user)\",\"$(.execution.input.password)\",\"$(.execution.input.subAccount)\",\"$(.execution.input.resourceGroup)\",\"$(.execution.input.maxIdleHours)\"]",
-          "script": "IyEvdXNyL2Jpbi9lbnYgYmFzaAoKcmVhZCBpbnB1dAoKZ2l0IGNsb25lIGh0dHBzOi8vJHsxfTokezJ9QGRldi5henVyZS5jb20vY2hldnJvbi9JVEMtSVRTRC1EaWdpdGFsQ29yZS9fZ2l0L3NjcC11dGlsCmNkIHNjcC11dGlsCmdpdCBjaGVja291dCAtYiBkZXYgb3JpZ2luL2Rldgp0eXBlIC1hIGNmCnR5cGUgLWEgbm9kZTEwCm5vZGUxMCBzdG9wLXVudXNlZC1hcHBzLmpzICR7M30gJHs0fSAkezV9ICR7Nn0gJHs3fSAyPiYx"
+          "parameters": "[\"$(.execution.input.user)\",\"$(.execution.input.password)\",\"$(.execution.input.subAccount)\",\"$(.execution.input.resourceGroup)\",\"$(.execution.input.maxIdleHours)\"]",
+          "script": "IyEvdXNyL2Jpbi9lbnYgYmFzaAoKcmVhZCBpbnB1dAoKZ2l0IGNsb25lIGh0dHBzOi8vZ2l0aHViLmNvbS9zYXAtdXgvc2NwLXV0aWwuZ2l0CmNkIHNjcC11dGlsCnR5cGUgLWEgY2YKdHlwZSAtYSBub2RlMTAKbm9kZTEwIHN0b3AtdW51c2VkLWFwcHMuanMgJHsxfSAkezJ9ICR7M30gJHs0fSAkezV9IDI+JjE="
         },
         "alias": "ExecuteScript",
         "progressMessage": null,
@@ -64,42 +64,6 @@
       "defaultValue": null,
       "defaultValueFromInput": null,
       "description": "Password for SAP CP CF subaccount user"
-    },
-    "gitUser": {
-      "type": "string",
-      "sensitive": false,
-      "required": true,
-      "minSize": null,
-      "maxSize": null,
-      "minValue": null,
-      "maxValue": null,
-      "defaultValue": null,
-      "defaultValueFromInput": null,
-      "description": "Git user to access scp_util repository"
-    },
-    "gitPassword": {
-      "type": "string",
-      "sensitive": false,
-      "required": true,
-      "minSize": null,
-      "maxSize": null,
-      "minValue": null,
-      "maxValue": null,
-      "defaultValue": null,
-      "defaultValueFromInput": null,
-      "description": "git password to access scp_util repository"
-    },
-    "region": {
-      "type": "string",
-      "sensitive": false,
-      "required": true,
-      "minSize": null,
-      "maxSize": null,
-      "minValue": null,
-      "maxValue": null,
-      "defaultValue": null,
-      "defaultValueFromInput": null,
-      "description": "Technical name or ID of a SAP CP CF region (e.g. cf-eu10, cf-eu1)"
     },
     "user": {
       "type": "string",
