@@ -27,13 +27,13 @@ function os_func() {
 var os = new os_func();
 
 // check input
-if (process.argv.length < 6) {
-    console.log("# please specify cf login by: node stop-unused-apps.js <cfUser> <cfPassword> <cfOrg> <cfSpace> <maxIdleHours>");
-    process.exit(0);
-}
+// if (process.argv.length < 6) {
+//     console.log("# please specify cf login by: node stop-unused-apps.js <cfUser> <cfPassword> <cfOrg> <cfSpace> <maxIdleHours>");
+//     process.exit(0);
+// }
 
 // login
-os.exec(`cf login -u ${process.argv[2]} -p ${process.argv[3]} -o ${process.argv[4]} -s ${process.argv[5]}`).then(sOut=>{
+os.exec(`cf login -a https://api.cf.us10.hana.ondemand.com -u ${process.argv[2]} -p ${process.argv[3]} -o ${process.argv[4]} -s ${process.argv[5]}`).then(sOut=>{
     console.log(`# Login successful: \n\n${sOut}`);
     if (process.argv.length > 6) {
         nMaxIdleHours = Number(process.argv[6]);
