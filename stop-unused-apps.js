@@ -86,7 +86,7 @@ function filterAndStopUnusedApps(aStartedApps) {
     }
     Promise.all(aPromises).then((values) => {
         console.log('# started apps (with log time and idle hours):\n\n' + JSON.stringify(aStartedApps, null, 4)+"\n");
-        //stopUnusedApps(aUnusedApps);
+        stopUnusedApps(aUnusedApps);
     });
 }
 
