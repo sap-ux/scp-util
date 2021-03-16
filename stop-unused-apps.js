@@ -27,10 +27,10 @@ function os_func() {
 var os = new os_func();
 
 // check input
-// if (process.argv.length < 6) {
-//     console.log("# please specify cf login by: node stop-unused-apps.js <cfUser> <cfPassword> <cfOrg> <cfSpace> <maxIdleHours>");
-//     process.exit(0);
-// }
+if (process.argv.length < 6) {
+    console.log("# please specify cf login by: node stop-unused-apps.js <cfUser> <cfPassword> <cfOrg> <cfSpace> <maxIdleHours>");
+    process.exit(0);
+}
 
 // login
 os.exec(`cf login -a https://api.cf.us10.hana.ondemand.com -u ${process.argv[2]} -p ${process.argv[3]} -o ${process.argv[4]} -s ${process.argv[5]}`).then(sOut=>{
@@ -91,6 +91,7 @@ function filterAndStopUnusedApps(aStartedApps) {
 }
 
 function stopUnusedApps(aUnusedApps) {
+    let sLines = "";
     if (!aUnusedApps || aUnusedApps.length == 0) {
         console.log("# No unsed app to stop");
         return;
@@ -102,9 +103,10 @@ function stopUnusedApps(aUnusedApps) {
             console.log(res);
             oEntry.state = "stopped";
         });
+        sLines += "# stopped app: "+oEntry.name + "\n";
         aPromises.push(p);
     }
     Promise.all(aPromises).then((values) => {
-        console.log('# All unused apps stopped:\n\n' + JSON.stringify(aUnusedApps, null, 4)+"\n");
+        console.log('# All unused apps stopped:\n\n' + JSON.stringify(aUnusedApps, null, 4)+"\n"+sLines);
     });
 }
