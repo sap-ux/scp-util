@@ -91,7 +91,7 @@ function filterAndStopUnusedApps(aStartedApps) {
 }
 
 function stopUnusedApps(aUnusedApps) {
-    let sLines = "# stopping apps ...";
+    let sLines = "# Stopping apps ...";
     if (!aUnusedApps || aUnusedApps.length == 0) {
         console.log("# No unsed app to stop");
         return;
@@ -103,10 +103,10 @@ function stopUnusedApps(aUnusedApps) {
             console.log(res);
             oEntry.state = "stopped";
         });
-        sLines += "# stopped app: "+oEntry.name + "\n";
+        sLines += "# Stopped app: "+oEntry.name + "\n";
         aPromises.push(p);
     }
-    lines += "# number of stopped apps by this command: "+aUnusedApps.length;
+    sLines += "# Number of stopped apps by this command: "+aUnusedApps.length;
     Promise.all(aPromises).then((values) => {
         console.log('# All unused apps stopped:\n\n' + JSON.stringify(aUnusedApps, null, 4)+"\n"+sLines);
     });
