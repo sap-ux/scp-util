@@ -9,7 +9,7 @@
         "execute": "scripts-sapcp:ExecuteScript:1",
         "input": {
           "parameters": "[\"$(.execution.input.user)\",\"$(.execution.input.password)\",\"$(.execution.input.subAccount)\",\"$(.execution.input.resourceGroup)\",\"$(.execution.input.maxIdleHours)\"]",
-          "script": "IyEvdXNyL2Jpbi9lbnYgYmFzaAoKcmVhZCBpbnB1dAoKZ2l0IGNsb25lIGh0dHBzOi8vZ2l0aHViLmNvbS9zYXAtdXgvc2NwLXV0aWwuZ2l0CmNkIHNjcC11dGlsCnR5cGUgLWEgY2YKdHlwZSAtYSBub2RlMTAKbm9kZTEwIHN0b3AtdW51c2VkLWFwcHMuanMgJHsxfSAkezJ9ICR7M30gJHs0fSAkezV9IDI+JjE="
+          "script": "IyEvdXNyL2Jpbi9lbnYgYmFzaAoKcmVhZCBpbnB1dAoKZ2l0IGNsb25lIGh0dHBzOi8vZ2l0aHViLmNvbS9zYXAtdXgvc2NwLXV0aWwuZ2l0CnR5cGUgLWEgY2YKdHlwZSAtYSBub2RlMTAKZWNobyAibm9kZTEwIC4vc2NwLXV0aWwvYXV0b3BpL3N0b3AtdW51c2VkLWFwcHMuanMgJHsxfSA8c2tpcC1wYXNzd29yZD4gJHszfSAkezR9ICR7NX0iCm5vZGUxMCAuL3NjcC11dGlsL2F1dG9waS9zdG9wLXVudXNlZC1hcHBzLmpzICR7MX0gJHsyfSAkezN9ICR7NH0gJHs1fSAyPiYx"
         },
         "alias": "ExecuteScript",
         "progressMessage": null,

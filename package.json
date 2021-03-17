@@ -2,7 +2,6 @@
   "name": "scp-util",
   "version": "1.0.0",
   "description": "SCP Utilities",
-  "main": "stop-unused-apps.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
